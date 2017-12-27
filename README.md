@@ -2,7 +2,7 @@
 Jailbreak IPA Links:
 
 iOS 8.4.1 32-bit ONLY
-  - etasonJB (untethered) https://etasonjb.tihmstar.net/ipa/etasonJB-RC5.ipa
+  - etasonJB (untethered) https://etasonjb.tihmstar.net/
   - HomeDepot (semi-untethered): http://wall.supplies/MixtapePlayer1-1-beta-1.ipa
   (semi-untethered, can be turned to untethered by downloading tihmstar's untether via his repo)
   
@@ -20,4 +20,4 @@ iOS 10-10.2 64-bit ONLY
   - Yalu102 (semi-untethered, excludes iPhone 7/Plus): https://yalu.qwertyoruiop.com/yalu102_beta7.ipa
   
 iOS 10-10.3.3 32-bit ONLY
-  - H3lix (semi-untethered): https://h3lix.tihmstar.net/ipa/h3lix-RC2.ipa
+  - H3lix (semi-untethered): https://h3lix.tihmstar.net/
