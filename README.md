@@ -8,7 +8,7 @@ iOS 8.4.1 32-bit ONLY
 
 iOS 9.2-9.3.3 64-bit ONLY
   - Pangu9 (semi-untethered): http://dl.pangu.25pp.com/jb/NvwaStone_1.1.ipa
-  - JailbreakMe9 (This only puts your device in a jailbroken state [basically an untether]): https://jbme.qwertyoruiop.com/
+  - JailbreakMe9 (This only puts your device in a jailbroken state [basically an untether] also utilizes tfp0 since Pangu's jailbreak does not include a tfp0 patch): https://jbme.qwertyoruiop.com/
 
 iOS 9.1-9.3.4 32-bit ONLY
   - JailbreakMe 4.0 (WebKit Based Jailbreak, semi-untethered, install untether via tihmstar's repo): https://jailbreak.me/
