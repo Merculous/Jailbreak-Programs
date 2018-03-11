@@ -27,7 +27,7 @@ iOS 10-10.3.3 32-bit ONLY
   - H3lix (semi-untethered): https://h3lix.tihmstar.net/
 
 iOS 10-10.3.3 64-bit ONLY
-  - H3lix (semi-untethered, excludes iPhone 7/Plus): https://doubleh3lix.tihmstar.net/
+  - doubleH3lix (semi-untethered, excludes iPhone 7/Plus): https://doubleh3lix.tihmstar.net/
   
 iOS 11-11.1.2 64-bit
   - Electra (semi-untethered): https://coolstar.org/electra/
