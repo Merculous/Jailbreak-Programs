@@ -27,7 +27,13 @@ iOS 10-10.3.3 32-bit ONLY
   - H3lix (semi-untethered): https://h3lix.tihmstar.net/
 
 iOS 10-10.3.3 64-bit ONLY
+  - Meridian (semi-untethered, includes iPhone 7/Plus): https://meridian.sparkes.zone/
+
+iOS 10-10.3.3 64-bit ONLY
   - doubleH3lix (semi-untethered, excludes iPhone 7/Plus): https://doubleh3lix.tihmstar.net/
   
-iOS 11-11.1.2 64-bit
+iOS 11-11.1.2
+  - Electra (semi-untethered): https://coolstar.org/electra1112/
+  
+iOS 11.2-11.4 beta 3
   - Electra (semi-untethered): https://coolstar.org/electra/
