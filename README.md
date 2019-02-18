@@ -20,5 +20,5 @@ iOS 10.x 32-bit ONLY
 iOS 10.x 64-bit ONLY
   - Meridian/doubleH3lix (WebKit/Jailbreakme/semi-untethered): https://totally-not.spyware.lol/
   
-iOS 11-11.3.1(up to 11.4 b3)
+iOS 11-11.4.1(up to 11.4 b3)
   - Undecimus (semi-untethered): https://github.com/pwn20wndstuff/Undecimus/releases
