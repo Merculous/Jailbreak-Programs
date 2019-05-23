@@ -17,8 +17,11 @@ iOS 9.3.5 32-bit ONLY
 iOS 10.x 32-bit ONLY
   - H3lix (semi-untethered): https://h3lix.tihmstar.net/
 
-iOS 10.x 64-bit ONLY
+iOS 10.x 64-bit ONLY (A10 users must use Meridian)
   - Meridian/doubleH3lix (WebKit/Jailbreakme/semi-untethered): https://totally-not.spyware.lol/
   
-iOS 11 - 12.1.2 (A12 devices do not have Cydia yet! Wait for an update.)
+iOS 11.x - 12.1.2 (A12 devices do not have Cydia yet! Wait for an update.)
   - Undecimus (semi-untethered): https://github.com/pwn20wndstuff/Undecimus/releases
+  
+iOS 12.x - 12.1.2 (All devices supported but substitute is used instead of substrate!)
+  - Chimera (semi-untethered): https://chimera.sh/
