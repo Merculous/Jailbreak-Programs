@@ -20,8 +20,8 @@ iOS 10.x 32-bit ONLY
 iOS 10.x 64-bit ONLY (A10 users must use Meridian)
   - Meridian/doubleH3lix (WebKit/Jailbreakme/semi-untethered): https://totally-not.spyware.lol/
   
-iOS 11.x - 12.2/12.4 (A12 devices will be getting an update soon!)
+iOS 11.x - 12.2/12.4 
   - Undecimus (semi-untethered): https://github.com/pwn20wndstuff/Undecimus/releases
   
-iOS 12.x - 12.2/12.4 (A7 -> A11 are supported up to 12.2/12.4. A12 are supported only up to 12.1.2)
+iOS 12.x - 12.2/12.4
   - Chimera (semi-untethered): https://chimera.sh/
