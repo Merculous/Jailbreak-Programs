@@ -11,7 +11,7 @@ iOS 9.2-9.3.3 64-bit ONLY
 iOS 9.1-9.3.4 32-bit ONLY
   - JailbreakMe 4.0 (WebKit/Jailbreakme, semi-untethered, install untether via tihmstar's repo): https://jailbreak.me/
   
-iOS 9.3.5 32-bit ONLY
+iOS 9.3.5/9.3.6 32-bit ONLY
   - Phoenix (semi-untethered): https://www.phoenixpwn.com/
  
 iOS 10.x 32-bit ONLY
