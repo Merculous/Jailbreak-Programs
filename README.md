@@ -20,8 +20,6 @@ iOS 10.x 32-bit ONLY
 iOS 10.x 64-bit ONLY (A10 users must use Meridian)
   - Meridian/doubleH3lix (WebKit/Jailbreakme/semi-untethered): https://totally-not.spyware.lol/
   
-iOS 11.x - 12.2/12.4 
+iOS 11.x - 13.5
   - Undecimus (semi-untethered): https://github.com/pwn20wndstuff/Undecimus/releases
   
-iOS 12.x - 12.2/12.4
-  - Chimera (semi-untethered): https://chimera.sh/
