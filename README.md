@@ -23,3 +23,5 @@ iOS 10.x 64-bit ONLY (A10 users must use Meridian)
 iOS 11.x - 13.5
   - Undecimus (semi-untethered): https://github.com/pwn20wndstuff/Undecimus/releases
   
+iOS 12.3-13.5 (Bootrom based jailbreak for 64-bit devices A7-A11, always able to jailbreak latest iOS)
+  - Checkra1n https://checkra.in/ (Windows isn't out yet)
