@@ -21,7 +21,7 @@ iOS 10.x 64-bit ONLY (A10 users must use Meridian)
   - Meridian/doubleH3lix (WebKit/Jailbreakme/semi-untethered): https://totally-not.spyware.lol/
   
 iOS 11.x - 13.5
-  - Undecimus (semi-untethered): https://github.com/pwn20wndstuff/Undecimus/releases
+  - Undecimus (semi-untethered): https://unc0ver.dev/
   
 iOS 12.3-13.5 (Bootrom based jailbreak for 64-bit devices A7-A11, always able to jailbreak latest iOS)
   - Checkra1n https://checkra.in/ (Windows isn't out yet)
