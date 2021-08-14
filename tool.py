@@ -68,7 +68,7 @@ def compress():
 
         for wsize in info:
             if info[wsize] == smallest:
-                print(f'Best word size: {info.get(wsize)}')
+                print(f'Best word size: {wsize}')
                 break
 
 
