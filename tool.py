@@ -2,6 +2,7 @@
 
 import shutil
 import subprocess
+import time
 from pathlib import Path
 
 word_sizes = (
@@ -31,6 +32,8 @@ def compress():
     info = {}
     if _7z_path:
         for w_size in word_sizes:
+            start = time.time()
+            print(f'Testing word size {w_size}')
             for directory in directories():
                 cmd = (
                     _7z_path,
@@ -40,7 +43,7 @@ def compress():
                     f'{directory}.7z',
                     directory.name
                 )
-                subprocess.run(cmd)
+                subprocess.run(cmd, stdout=subprocess.DEVNULL)
 
             total_size = 0
 
@@ -53,6 +56,8 @@ def compress():
             info[w_size] = total_size
             total_size = 0
             removeArchives()
+            end = time.time() - start
+            print(f'word size {w_size} took {end:.2f} seconds')
 
         sizes = []
 
@@ -68,5 +73,12 @@ def compress():
                 break
 
 
-if __name__ == '__main__':
+def main():
+    start = time.time()
     compress()
+    end = time.time() - start
+    print(f'Testing took {end:.2f} seconds')
+
+
+if __name__ == '__main__':
+    main()
