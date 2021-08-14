@@ -60,15 +60,15 @@ def compress():
 
         sizes = []
 
-        for wsize, total in info:
-            sizes.append(total)
+        for key in info:
+            sizes.append(info.get(key))
 
         sizes = tuple(sizes)
         smallest = min(sizes)
 
         for wsize in info:
             if info[wsize] == smallest:
-                print(f'Best word size: {info[wsize]}')
+                print(f'Best word size: {info.get(wsize)}')
                 break
 
 
