@@ -22,7 +22,6 @@ def directories():
 def removeArchives():
     for thing in Path().glob('*'):
         if thing.is_file() and thing.name.endswith('.7z'):
-            print(f'Removing file {thing.name}')
             thing.unlink()
 
 
