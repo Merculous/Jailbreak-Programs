@@ -105,9 +105,15 @@ def minimumLargestDictSize():
         if 'm' in size:
             size = int(size[:-1])
             if size > largest:
-                break
+                return size
 
-    return size
+
+def smallestSize(data):
+    """
+    Return the smallest size when testing is done.
+    """
+    smallest = min(data, key=data.get)
+    return (smallest, data[smallest])
 
 
 def testAllDictSizes():
@@ -158,7 +164,8 @@ def testAllBlockSizes():
 
 def compress():
     removeArchives()
-    testAllDictSizes()
+    dict_best = testAllDictSizes()
+    print(f'Best: {smallestSize(dict_best)}')
     # testAllWordSizes()
     # testAllBlockSizes()
 
