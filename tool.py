@@ -2,9 +2,14 @@
 
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 _7z_path = shutil.which('7z')
+
+if not _7z_path:
+    sys.exit('7z binary could not be found!')
+
 
 values = {
     'wordsize': (
@@ -27,8 +32,6 @@ values = {
         '32g', '64g'
     )
 }
-
-# TODO Check to see if we can even use 'arbitrary' sizes of each
 
 
 def directories():
@@ -116,6 +119,25 @@ def smallestSize(data):
     return (smallest, data[smallest])
 
 
+def runCMD(args):
+    """
+    Run 7z command for every directory, given the passed arguments.
+    """
+    dirs = directories()
+
+    for directory in dirs:
+        cmd = (
+            _7z_path,
+            'a',
+            '-mx9',
+            args,
+            '--',
+            f'{directory.name}.7z',
+            directory.name
+        )
+        subprocess.run(cmd, stdout=subprocess.DEVNULL)
+
+
 def testAllDictSizes():
     """
     Compress all directories within the current working directory.
@@ -134,19 +156,7 @@ def testAllDictSizes():
 
         print(f'Dict size: {size}')
 
-        dirs = directories()
-        dict_cmd = f'-md{size}'
-
-        for directory in dirs:
-            cmd = (
-                _7z_path,
-                'a',
-                '-mx9',
-                dict_cmd,
-                f'{directory.name}.7z',
-                directory.name
-            )
-            subprocess.run(cmd, stdout=subprocess.DEVNULL)
+        runCMD(f'-md{size}')
 
         info[size] = getTotalSizeOfArchives()
         removeArchives()
@@ -159,6 +169,10 @@ def testAllWordSizes():
 
 
 def testAllBlockSizes():
+    pass
+
+
+def testNumberOfThreads():
     pass
 
 
