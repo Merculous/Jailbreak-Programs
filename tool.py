@@ -119,23 +119,39 @@ def smallestSize(data):
     return (smallest, data[smallest])
 
 
-def runCMD(args):
+def runCMD(dict_size=None, word_size=None, block_size=None, threads=None):
     """
     Run 7z command for every directory, given the passed arguments.
     """
     dirs = directories()
 
+    cmd = [
+        _7z_path,
+        'a',
+        '-mx9',
+        '--'
+    ]
+
+    if dict_size:
+        dict_size = f'-md{dict_size}'
+        cmd.insert(cmd.index('--'), dict_size)
+
+    if word_size:
+        word_size = f'-mfb{word_size}'
+        cmd.insert(cmd.index('--'), word_size)
+
+    if block_size:
+        word_size = f'-ms{block_size}'
+        cmd.insert(cmd.index('--'), block_size)
+
+    if threads:
+        word_size = f'-mmt{threads}'
+        cmd.insert(cmd.index('--'), threads)
+
     for directory in dirs:
-        cmd = (
-            _7z_path,
-            'a',
-            '-mx9',
-            args,
-            '--',
-            f'{directory.name}.7z',
-            directory.name
-        )
+        cmd.extend((f'{directory.name}.7z', directory.name))
         subprocess.run(cmd, stdout=subprocess.DEVNULL)
+        del cmd[-2:]  # FIXME I have no idea how to do this better right now
 
 
 def testAllDictSizes():
@@ -156,7 +172,7 @@ def testAllDictSizes():
 
         print(f'Dict size: {size}')
 
-        runCMD(f'-md{size}')
+        runCMD(size)
 
         info[size] = getTotalSizeOfArchives()
         removeArchives()
@@ -164,8 +180,18 @@ def testAllDictSizes():
     return info
 
 
-def testAllWordSizes():
-    pass
+def testAllWordSizes(dict_size):
+    info = {}
+
+    for size in values['wordsize']:
+        print(f'Word size: {size}')
+
+        runCMD(dict_size[0], size)
+
+        info[size] = getTotalSizeOfArchives()
+        removeArchives()
+
+    return info
 
 
 def testAllBlockSizes():
@@ -178,10 +204,12 @@ def testNumberOfThreads():
 
 def compress():
     removeArchives()
-    dict_best = testAllDictSizes()
-    print(f'Best: {smallestSize(dict_best)}')
-    # testAllWordSizes()
-    # testAllBlockSizes()
+
+    dict_best = smallestSize(testAllDictSizes())
+    print(f'Best dict size: {dict_best}')
+
+    word_best = smallestSize(testAllWordSizes(dict_best))
+    print(f'Best word size: {word_best}')
 
 
 def main():
