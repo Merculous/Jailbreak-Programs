@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import shutil
 import subprocess
 import sys
@@ -25,7 +26,7 @@ values = {
         '1024m', '1536m'
     ),
     'blocksize': (
-        'off', 'on', '1m', '2m', '3m',
+        '=off', '=on', '1m', '2m', '3m',
         '4m', '6m', '8m', '12m', '16m',
         '32m', '64m', '128m', '256m', '512m',
         '1g', '2g', '4g', '8g', '16g',
@@ -111,6 +112,21 @@ def minimumLargestDictSize():
                 return size
 
 
+def minimumLargestBlockSize():
+    """
+    Return the largest block size given the largest directory size
+    """
+    largest_dirsize = getLargestDirectorySize()
+    sizes = (s for s in values['blocksize'])
+
+    for size in sizes:
+        if size.endswith('m') or size.endswith('g'):
+            if largest_dirsize < 1024:
+                size = int(size[:-1])
+                if size > largest_dirsize:
+                    return size
+
+
 def smallestSize(data):
     """
     Return the smallest size when testing is done.
@@ -141,11 +157,11 @@ def runCMD(dict_size=None, word_size=None, block_size=None, threads=None):
         cmd.insert(cmd.index('--'), word_size)
 
     if block_size:
-        word_size = f'-ms{block_size}'
+        block_size = f'-ms{block_size}'
         cmd.insert(cmd.index('--'), block_size)
 
     if threads:
-        word_size = f'-mmt{threads}'
+        threads = f'-mmt{threads}'
         cmd.insert(cmd.index('--'), threads)
 
     for directory in dirs:
@@ -186,7 +202,7 @@ def testAllWordSizes(dict_size):
     for size in values['wordsize']:
         print(f'Word size: {size}')
 
-        runCMD(dict_size[0], size)
+        runCMD(dict_size, size)
 
         info[size] = getTotalSizeOfArchives()
         removeArchives()
@@ -194,26 +210,68 @@ def testAllWordSizes(dict_size):
     return info
 
 
-def testAllBlockSizes():
-    pass
+def testAllBlockSizes(dict_size, word_size):
+    info = {}
+
+    largestBlockSize = minimumLargestBlockSize()
+
+    for size in values['blocksize']:
+        if size.endswith('m'):
+            if int(size[:-1]) > largestBlockSize:
+                break
+
+        print(f'Block size: {size}')
+
+        runCMD(dict_size, word_size, size)
+
+        info[size] = getTotalSizeOfArchives()
+        removeArchives()
+
+    return info
 
 
-def testNumberOfThreads():
-    pass
+def testNThreads(dict_size, word_size, block_size):
+    # At least for me, the number of threads never changed the compression
+
+    info = {}
+
+    # Start with the max amount of threads first.
+    # If the amount of threads does not change the total size,
+    # return the largest for the purpose of speed.
+
+    for i in reversed(range(1, os.cpu_count() + 1)):
+        print(f'Threads: {i}')
+
+        runCMD(dict_size, word_size, block_size, threads=i)
+
+        info[i] = getTotalSizeOfArchives()
+        removeArchives()
+
+    return info
 
 
-def compress():
+def main():
     removeArchives()
 
     dict_best = smallestSize(testAllDictSizes())
     print(f'Best dict size: {dict_best}')
 
-    word_best = smallestSize(testAllWordSizes(dict_best))
+    word_best = smallestSize(testAllWordSizes(dict_best[0]))
     print(f'Best word size: {word_best}')
 
+    # TODO 1g+ block sizes
 
-def main():
-    compress()
+    block_best = smallestSize(testAllBlockSizes(dict_best[0], word_best[0]))
+    print(f'Best block size: {block_best}')
+
+    thread_best = smallestSize(testNThreads(
+        dict_best[0], word_best[0], block_best[0])
+    )
+
+    print(f'Best thread count: {thread_best}')
+
+    print('Testing done! Compressing with best values...')
+    runCMD(dict_best[0], word_best[0], block_best[0], thread_best[0])
 
 
 if __name__ == '__main__':
